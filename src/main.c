@@ -83,7 +83,19 @@ void correct_particles(void)
 
 double *acceleration_gravity(double r[3], double b[3])
 {
-	double ag[3] = {0, -0.1, 0};
+	double ag[3] = {0.0, -0.1, 0.0};
+	for(int j = 0; j < 3; j++)
+	{
+		b[j] = ag[j];
+	}
+	return b;
+}
+
+double *acceleration_circular(double r[3], double b[3])
+{
+	double ag[3] = {0.0, 0.0, 0.0};
+	ag[0] -= 0.2 * (r[1] - 0.5);
+	ag[1] += 0.2 * (r[0] - 0.5);
 	for(int j = 0; j < 3; j++)
 	{
 		b[j] = ag[j];
